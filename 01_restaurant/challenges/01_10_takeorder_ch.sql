@@ -7,3 +7,33 @@
 -- 1 Tropical Blue Smoothie
 -- Delivery date and time: September 20, 2022 @ 2PM (14:00)
 -- There are no taxes or other fees.
+/*
+SELECT * 
+FROM Customers
+WHERE 
+  Address = '6939 Elka Place'
+
+INSERT INTO Orders (CustomerID, OrderDate)
+VALUES (70, '2022-09-20 14:00:00')
+
+
+
+SELECT * 
+FROM Orders
+WHERE CustomerID = 70
+ORDER BY OrderDate DESC => id = 1001
+*/
+/*
+INSERT INTO OrdersDishes(OrderID, DishID)
+VALUES(1001, (SELECT DishID FROM Dishes WHERE Name = 'House Salad'));
+
+INSERT INTO OrdersDishes(OrderID, DishID)
+VALUES(1001, (SELECT DishID FROM Dishes WHERE Name = 'Mini Cheeseburgers'));
+
+INSERT INTO OrdersDishes(OrderID, DishID)
+VALUES(1001, (SELECT DishID FROM Dishes WHERE Name = 'Tropical Blue Smoothie'));
+*/
+SELECT * FROM Orders o
+INNER JOIN OrdersDishes od
+ON o.OrderID = od.OrderID
+WHERE o.OrderID = 1001
